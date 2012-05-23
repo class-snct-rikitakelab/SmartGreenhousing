@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+  <head>
+    <title>SmartGreenhousing</title>
+    <meta content="teamSmartGreenhousing" name="author">
+    <meta content="BlueGriffon wysiwyg editor" name="generator">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  </head>
+  <body>
+    <h1>SmartGreenhousing</h1>
+    <section id="meatar">
+      <h2>各種センサーの様子</h2>
+      <article class="wet"> 湿度 <textarea id="wetmeater" readonly="readonly" cols="1"
+
+          rows="1"></textarea> %</article>
+      <article class="tempurature"> 温度 <textarea id="tempmeater" readonly="readonly"
+
+          cols="1" rows="1"></textarea> ℃</article>
+    </section>
+    <section id="device">
+      <h2>各種デバイスの操作</h2>
+      <article class="sprintcooler"> スプリンクラー <input value="ON/OFF switchを設置する予定"
+
+          type="button"> </article>
+    </section>
+    
+  </body>
+</html>
