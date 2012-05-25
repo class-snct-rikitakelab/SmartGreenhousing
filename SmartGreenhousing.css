@@ -1,0 +1,40 @@
+body{
+	width: 90%;
+	margin:20px auto;
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	}
+
+p{
+	margin:0 0 20px 0;
+	}
+
+header#pageheader{
+	width: 100%;
+	}
+
+section#moist{
+	float: left;
+	width: 50%;
+	}
+
+section#tempurature{
+	float: right;
+	width: 50%;
+}
+
+section#device{
+	float: center;
+	width: 100%;
+	}
+	
+	article#meater{
+	float: center;
+	width: 100%;
+}
+	article#device{
+	float: center;
+	width: 100%;
+}
+	
+	
+	
