@@ -12,5 +12,5 @@ void loop() {
   Serial.print(moist);
   Serial.println("%");
 
-  delay(500);
+  delay(100);
 }
