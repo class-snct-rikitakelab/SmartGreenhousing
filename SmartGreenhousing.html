@@ -12,19 +12,26 @@
     <article class="meatar">
       <h2>各種センサーの様子</h2>
       <p></p>
-      <section id="moist"> 湿度 <textarea id="moistmeater" readonly="readonly" cols="1"
+      <section id="moist"> 湿度 <textarea id="moistmeater" readonly="readonly" cols="1"
+
           rows="1"></textarea> ％</section>
       <p></p>
       <p></p>
-      <section id="tempurature"> 温度 <textarea id="tempmeater" readonly="readonly"
+      <section id="tempurature"> 温度 <textarea id="tempmeater" readonly="readonly"
+
           cols="1" rows="1"></textarea> ℃</section>
       <p></p>
     </article>
     <article class="device">
       <h2>各種デバイスの操作</h2>
       <p></p>
-      <section id="sprintcooler"> スプリンクラー <input value="ON/OFF switchを設置する予定" type="button">
+      <section id="sprintcooler"> スプリンクラー
+        <form action="hidden_out.jsp" method="post"> <input name="spkr" value="on"
+
+            type="hidden"> <input value="ON" onclick="alert('スプリンクターON')" type="submit">
+        </form>
       </section>
     </article>
+    
   </body>
 </html>
