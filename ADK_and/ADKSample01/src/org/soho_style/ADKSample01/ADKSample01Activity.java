@@ -182,10 +182,10 @@ public class ADKSample01Activity extends Activity implements Runnable {
 					break;
 				case 0x4:
 					if (len >= 3) {
-						Message m = Message.obtain(mHandler,
-								MESSAGE_TEMPERATURE);
-						double tempval= (double) composeInt(buffer[i+1],buffer[i+2]) * 100 /1023; 
-						m.obj = new String("湿度=" + String.format("%.2f", tempval) + "%");
+						Message m = Message.obtain(mHandler,MESSAGE_TEMPERATURE);
+						double tempval= (double) composeInt(buffer[i+1],buffer[i+2]) / 1023 *5 ; 
+						tempval = tempval * 100 - 273.15;
+						m.obj = new String("温度=" + String.format("%.2f", tempval) + "℃");
 						mHandler.sendMessage(m);
 					}
 					i += 3;
@@ -193,7 +193,8 @@ public class ADKSample01Activity extends Activity implements Runnable {
 				case 0x5:
 					if (len >= 3) {
 						Message m = Message.obtain(mHandler, MESSAGE_LIGHT);
-						m.obj = new String("明るさ=" + buffer[i + 1] + "!" + buffer[i + 2]);
+						double humidval= (double) composeInt(buffer[i+1],buffer[i+2]) * 100 /1023; 
+						m.obj = new String("湿度=" + String.format("%.2f", humidval) + "%");
 						mHandler.sendMessage(m);
 					}
 					i += 3;
@@ -223,10 +224,10 @@ public class ADKSample01Activity extends Activity implements Runnable {
 				break;*/
 			case MESSAGE_TEMPERATURE:
 				tv1.setText(msg.obj.toString());
-				break;/*
-			case MESSAGE_LIGHT:
-				tv3.setText(msg.obj.toString());
 				break;
+			case MESSAGE_LIGHT:
+				tv2.setText(msg.obj.toString());
+				break;/*
 			case MESSAGE_JOY:
 				tv4.setText(msg.obj.toString());
 				break;*/
