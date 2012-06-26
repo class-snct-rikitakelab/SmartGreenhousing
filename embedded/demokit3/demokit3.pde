@@ -2,6 +2,8 @@
 #include <Usb.h>
 #include <AndroidAccessory.h>
 
+int delaytime=100;
+
 
 #define  LED3_RED       2
 #define  LED3_GREEN     4
@@ -220,5 +222,5 @@ void loop()
 		digitalWrite(RELAY2, LOW);
 	}
 
-	delay(10);
+	delay(delaytime);
 }
