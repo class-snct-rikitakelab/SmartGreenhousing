@@ -61,10 +61,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 		registerReceiver(mUsbReceiver, filter);
 		tv1 = (TextView) findViewById(R.id.textView1);
 		tv2 = (TextView) findViewById(R.id.textView2);
-		tv3 = (TextView) findViewById(R.id.textView3);
-		tv4 = (TextView) findViewById(R.id.textView4);
-		et = (EditText) findViewById(R.id.editText1);
-		et.setTextSize(8);
+
 //		  try {
 //	           Runtime.getRuntime().exec("logcat -c");
 //	       } catch(Exception e) {
@@ -103,7 +100,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			Log.d("AAA", action);
-			showLog();
+
 			if (ACTION_USB_PERMISSION.equals(action)) {
 				synchronized (this) {
 					UsbAccessory accessory = UsbManager.getAccessory(intent);
@@ -235,20 +232,5 @@ public class ADKSample01Activity extends Activity implements Runnable {
 
 		}
 	};
-	private void showLog() {
-		 try {
-	           ArrayList<String> commandLine = new ArrayList<String>();
-	           commandLine.add( "logcat");
-	           commandLine.add( "-d");
-	           Process process = Runtime.getRuntime().exec( commandLine.toArray( new String[commandLine.size()]));
-	           BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(process.getInputStream()), 1024);
-	           String line;
-	           while ( (line = bufferedReader.readLine()) != null) {
-	        	   et.append(line);
-	        	   et.append("\n");
-	           }
-	       } catch ( IOException e) {
-	           // 例外処理
-	       }
-	}
+
 }
