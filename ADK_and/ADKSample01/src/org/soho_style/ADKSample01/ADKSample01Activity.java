@@ -61,7 +61,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 		registerReceiver(mUsbReceiver, filter);
 		tv1 = (TextView) findViewById(R.id.textView1);
 		tv2 = (TextView) findViewById(R.id.textView2);
-
+		tv3 = (TextView) findViewById(R.id.textView3);
 //		  try {
 //	           Runtime.getRuntime().exec("logcat -c");
 //	       } catch(Exception e) {
@@ -172,7 +172,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 				case 0x1:
 					if (len >= 3) {
 						Message m = Message.obtain(mHandler, MESSAGE_SWITCH);
-						m.obj = new String("スイッチ=" + buffer[i + 1] + ":" +  buffer[i + 2]);
+						m.obj = new String("delay_time = " + composeInt(buffer[i+1],buffer[i+2])+ "ms");
 						mHandler.sendMessage(m);
 					}
 					i += 3;
@@ -216,15 +216,17 @@ public class ADKSample01Activity extends Activity implements Runnable {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			/*case MESSAGE_SWITCH:
-				tv2.setText(msg.obj.toString());
-				break;*/
+			
 			case MESSAGE_TEMPERATURE:
 				tv1.setText(msg.obj.toString());
 				break;
 			case MESSAGE_LIGHT:
 				tv2.setText(msg.obj.toString());
-				break;/*
+				break;
+			case MESSAGE_SWITCH:
+				tv3.setText(msg.obj.toString());
+				break;
+				/*
 			case MESSAGE_JOY:
 				tv4.setText(msg.obj.toString());
 				break;*/

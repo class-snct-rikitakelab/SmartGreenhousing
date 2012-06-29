@@ -35,5 +35,14 @@
         android:text="dd.dd%"
         android:gravity="center"
         android:textSize="80sp" />
+    
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="
+        dddd ms"
+        android:gravity="right"
+        android:textSize="40sp" />
 
 </LinearLayout>
