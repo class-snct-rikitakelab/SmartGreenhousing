@@ -24,9 +24,16 @@ void loop()
   byte msg[3];
   int val;
   int vt=10;
+  double i=0;
   
   vt = analogRead(DELAY_SENSOR);
+  i = (double) vt * 1000/1023;
+  vt = (int) i;
   delay_time = 10 + vt*3;
+  
+  if(delay_time==3010){
+    delay_time = 3000;
+  }
   
   if (acc.isConnected()) {
     
