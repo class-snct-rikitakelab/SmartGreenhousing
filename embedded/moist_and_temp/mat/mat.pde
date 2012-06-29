@@ -29,6 +29,12 @@ void loop()
   delay_time = 10 + vt*3;
   
   if (acc.isConnected()) {
+    
+    msg[0] = 0x1;
+    msg[1] = delay_time >> 8;
+    msg[2] = delay_time & 0xff;
+    acc.write(msg, 3);
+    
     val = analogRead(TEMP_SENSOR);
     msg[0] = 0x4;
     msg[1] = val >> 8;
