@@ -182,7 +182,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 						Message m = Message.obtain(mHandler,MESSAGE_TEMPERATURE);
 						double tempval= (double) composeInt(buffer[i+1],buffer[i+2]) / 1023 *5 ; 
 						tempval = tempval * 100 - 273.15;
-						m.obj = new String("温度=" + String.format("%.2f", tempval) + "℃");
+						m.obj = new String( String.format("%.2f", tempval) + "℃");
 						mHandler.sendMessage(m);
 					}
 					i += 3;
@@ -191,7 +191,7 @@ public class ADKSample01Activity extends Activity implements Runnable {
 					if (len >= 3) {
 						Message m = Message.obtain(mHandler, MESSAGE_LIGHT);
 						double humidval= (double) composeInt(buffer[i+1],buffer[i+2]) * 100 /1023; 
-						m.obj = new String("湿度=" + String.format("%.2f", humidval) + "%");
+						m.obj = new String( String.format("%.2f", humidval) + "%");
 						mHandler.sendMessage(m);
 					}
 					i += 3;

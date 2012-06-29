@@ -5,17 +5,35 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temper.."
+        android:gravity="center"
+        android:textSize="60sp" />
+    
+    <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="温度＝dd.ddC"
-        android:textSize="45sp" />
+        android:text="dd.dd℃"
+        android:gravity="center"
+        android:textSize="80sp" />
+    
+    <TextView
+        android:id="@+id/textView02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Humidity"
+        android:gravity="center"
+        android:textSize="60sp" />
     
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="湿度＝dd.dd%"
-        android:textSize="45sp" />
+        android:text="dd.dd%"
+        android:gravity="center"
+        android:textSize="80sp" />
 
 </LinearLayout>
