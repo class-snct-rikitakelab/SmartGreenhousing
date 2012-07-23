@@ -80,6 +80,6 @@ void loop()
     msg[1] = val >> 8;
     msg[2] = val & 0xff;
     acc.write(msg, 3);
-  
+  }
   wait();
 }
