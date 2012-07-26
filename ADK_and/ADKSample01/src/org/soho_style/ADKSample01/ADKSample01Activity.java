@@ -22,15 +22,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ADKSample01Activity extends Activity implements Runnable {
 	private static final String ACTION_USB_PERMISSION = "com.google.android.DemoKit.action.USB_PERMISSION";
 	private static final int MESSAGE_SWITCH = 1;
 	private static final int MESSAGE_TEMPERATURE = 2;
 	private static final int MESSAGE_LIGHT = 3;
-	private static final int MESSAGE_JOY = 4;
+	//private static final int MESSAGE_JOY = 4;
 	private boolean mPermissionRequestPending;
 	private PendingIntent mPermissionIntent;
 	UsbManager mUsbManager;
@@ -38,8 +41,10 @@ public class ADKSample01Activity extends Activity implements Runnable {
 	FileInputStream mInputStream;
 	FileOutputStream mOutputStream;
 	UsbAccessory mAccessory;
+	ToggleButton tBtn1, tBtn2;
 	TextView tv1, tv2, tv3, tv4;
-	EditText et;
+	public static final byte RELAY_COMMAND = 3;
+	//EditText et;
 
 	private int composeInt(byte hi, byte lo) {
 		int val = (int) hi & 0xff;
@@ -62,11 +67,29 @@ public class ADKSample01Activity extends Activity implements Runnable {
 		tv1 = (TextView) findViewById(R.id.textView1);
 		tv2 = (TextView) findViewById(R.id.textView2);
 		tv3 = (TextView) findViewById(R.id.textView3);
-//		  try {
-//	           Runtime.getRuntime().exec("logcat -c");
-//	       } catch(Exception e) {
-//	           // 例外処理
-//	       }
+		tBtn1 = (ToggleButton) findViewById(R.id.toggleButton1);
+		tBtn2 = (ToggleButton) findViewById(R.id.toggleButton2);
+		
+		tBtn1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					sendCommand(RELAY_COMMAND, (byte)0, 1);
+				} else {
+					sendCommand(RELAY_COMMAND, (byte)0, 0);
+				}
+			}
+		});
+		tBtn2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					sendCommand(RELAY_COMMAND, (byte)1, 1);
+				} else {
+					sendCommand(RELAY_COMMAND, (byte)1, 0);
+				}
+			}
+		});
+		
+
 	}
 	@Override
 	public void onResume() {
@@ -196,14 +219,14 @@ public class ADKSample01Activity extends Activity implements Runnable {
 					}
 					i += 3;
 					break;
-				case 0x6:
+/*				case 0x6:
 					if (len >= 3) {
 						Message m = Message.obtain(mHandler, MESSAGE_JOY);
 						m.obj = new String("ジョイスティック=" + buffer[i + 1] + ":" +  buffer[i + 2]);
 						mHandler.sendMessage(m);
 					}
 					i += 3;
-					break;
+					break;*/
 				default:
 					i = len;
 					break;
@@ -234,5 +257,22 @@ public class ADKSample01Activity extends Activity implements Runnable {
 
 		}
 	};
+	
+	public void sendCommand(byte command, byte target, int value) {
+		byte[] buffer = new byte[3];
+		if (value > 255)
+			value = 255;
+
+		buffer[0] = command;
+		buffer[1] = target;
+		buffer[2] = (byte) value;
+		if (mOutputStream != null && buffer[1] != -1) {
+			try {
+				mOutputStream.write(buffer);
+			} catch (IOException e) {
+				Log.e("TAG", "write failed", e);
+			}
+		}
+	}
 
 }

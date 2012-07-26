@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:orientation="vertical">
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textView00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textSize="20sp" />
+    
+    
+    <DigitalClock 
+        android:id="@+id/digitalClock1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:textSize="50sp"
+        android:gravity="center"
+        android:text="DigitalClock"/>
+        
+        
     <TextView
         android:id="@+id/textView01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Temper.."
-        android:gravity="center"
-        android:textSize="60sp" />
+        android:text="Temperature"
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/textView1"
@@ -18,15 +34,14 @@
         android:layout_height="wrap_content"
         android:text="dd.dd℃"
         android:gravity="center"
-        android:textSize="80sp" />
+        android:textSize="50sp" />
     
     <TextView
         android:id="@+id/textView02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Humidity"
-        android:gravity="center"
-        android:textSize="60sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/textView2"
@@ -34,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="dd.dd%"
         android:gravity="center"
-        android:textSize="80sp" />
+        android:textSize="50sp" />
     
     <TextView
         android:id="@+id/textView3"
@@ -43,6 +58,18 @@
         android:text="
         dddd ms"
         android:gravity="right"
-        android:textSize="40sp" />
+        android:textSize="40sp" android:singleLine="false"/>
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
 
 </LinearLayout>
