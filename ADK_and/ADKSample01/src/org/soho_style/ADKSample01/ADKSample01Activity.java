@@ -1,5 +1,5 @@
 package org.soho_style.ADKSample01;
-
+//twitter機能拡張
 import java.io.BufferedReader;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
