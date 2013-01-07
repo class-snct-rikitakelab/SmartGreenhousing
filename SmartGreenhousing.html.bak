@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+  <head>
+    <title>Smar &lt;h1&gt;SmartGreenhousing&lt;/h1&gt; &lt;article
+      class="meatar"&gt; &lt;h2&gt;各種センサーの様子&lt;/h2&gt;tGreenhousing</title>
+    <meta content="teamSmartGreenhousing" name="author">
+    <meta content="BlueGriffon wysiwyg editor" name="generator">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" href="SmartGreenhousing.css" type="text/css">
+  </head>
+  <body>
+    <p></p>
+    <section id="moist"> 湿度 <textarea id="moistmeater" readonly="readonly" cols="1"
+
+        rows="1"></textarea> ％</section>
+    <p></p>
+    <p></p>
+    <section id="tempurature"> 温度 <textarea id="tempmeater" readonly="readonly"
+
+        cols="1" rows="1"></textarea> ℃</section>
+    <p></p>
+    <article class="device">
+      <h2>各種デバイスの操作</h2>
+      <p></p>
+      <section id="sprintcooler"> スプリンクラー
+        <form action="./twitteroauth/post.php" method="post"> <input name="spkr" value="on"
+
+            type="hidden"> <input value="ON" onclick="alert('スプリンクラーON')" type="submit">
+        </form>
+      </section>
+      <form><textarea name="tweetcontents" cols="40" rows="4"></textarea></form>
+      <form><input formmethod="POST" formaction="http://google.com" value="作成" type="submit"></form>
+    </article>
+    
+  </body>
+</html>

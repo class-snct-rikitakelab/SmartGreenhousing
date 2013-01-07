@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8">
+    <title>websock chat</title>
+  </head>
+  <body>
+    <h1>Web Sockets Chat</h1>
+    <textarea id="chatlog" readonly="readonly" cols="30" rows="10"></textarea> <input
+      id="name" size="6" placeholder="お名前" type="text"> <input id="message" size="20"
+      placeholder="メッセージ" type="text"> <button id="submitBottun" onclick="submitMessage()"
+      disabled="disabled">送信</button>
+    <script type="text/javascript">
+      //サーバに通信を要求
+      var ws = new Websocket("ws://www42413u.sakura.ne.jp/~densichi/chat");
+      // サーバからメッセージを受信
+      ws.onmessage = function(event) {
+        //チャットログを書き出し
+        document.getElementById("chatlog").textContent += event.data + "/n";
+      };
+      //サーバとの通信が確率された。
+      ws.onopen = function(event) {
+        document.getElementById("submitButton").disabled = false;
+      };
+      //サーバとの通信が切断された
+      ws.onclose = function(event){
+        document.getElementById("submitButton").disabled = true;
+        alert("サーバとの接続が切断されました。");
+      };
+      function submitMessage(){
+          var name = document.getElementById("name").value;
+        var message = document.getElementById("message").value;
+        //サーバにメッセージを送信
+        ws.send(name + ">" + message);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+INDEX VERSION 1.126+C:\cygwin\home\den7\SmartGreenhousing\ADK_and\.metadata\.plugins\org.eclipse.jdt.core
+3352491446.index
+1153214832.index
+3847871068.index
+223954161.index
+1937426728.index
+2229730522.index
+1214157282.index
+3700006496.index
+2488276299.index
+2483444866.index
